@@ -1,0 +1,75 @@
+Home
+Device
+Celluar
+Wi-Fi
+Bluetooth
+Display
+Language
+System
+About
+Please pair Bluetooth with your mobile phone
+Connecting...
+Auto Connect
+Select Pairing Device
+or pair Bluetooth with your mobile phone
+No connection Records
+Dial-up Status 
+Connected
+Not connected
+RSSI
+ISP
+Refresh
+Disconnect
+Wi-Fi
+Network Channel
+Bluetooth
+Bluetooth Modem
+Night Mode
+Auto Night Mode Starting Time
+Language
+Resolution Selection
+Driving Seat 
+Left-hand Drive
+Right-hand Drive
+Icon Settings(Only for IOS)
+Default
+Optional
+Software Update
+Model
+Firmware info
+Hardware info
+Currently is the latest version.
+New version found, update?
+OK
+Cancel
+Update succeeded!
+Update failed!
+Reset
+Auto
+Factory settings
+Confirm to restore factory settings
+HD
+SD
+Fast
+Refresh Page
+Wifi password
+Wifi password:
+Change Password
+Set network security key
+Security key:
+Save
+The password must be in English or digits. Special characters are not supported. The password contains 8 to 12 characters.
+The password has been modified. Please reconnect with the new password.
+Changing the password will disconnect all users who are currently connected
+New password:
+The network is abnormal. Please confirm the network connection. Refresh?
+Car name setting(Only for IOS)
+Name display:
+*After turn on the Bluetooth Modem will replace the 4G cellular network and use the mobile phone cellular network<br>1.Mobile phone need turn on the hotspot before connecting<br>2.Mobile phone can not be without network for a long time
+Frame rate
+Standard
+Network detection
+Turn on bluetooth network
+Mode
+Pictures
+Video

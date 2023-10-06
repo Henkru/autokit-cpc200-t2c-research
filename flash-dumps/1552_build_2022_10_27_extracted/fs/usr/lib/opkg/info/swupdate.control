@@ -1,0 +1,9 @@
+Package: swupdate
+Version: 2019.04-1
+Depends: libc, zlib, libconfig, uboot-envtools, ota-burnboot
+Source: package/allwinner/swupdate
+Section: utils
+Architecture: sunxi
+Installed-Size: 48661
+Description:  SWUpdate provides a reliable way to update the software on an embedded system.
+ Sources are hosted at https://github.com/sbabic/swupdate

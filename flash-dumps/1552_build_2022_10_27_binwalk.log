@@ -1,0 +1,38 @@
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+210600        0x336A8         CRC32 polynomial table, little endian
+229008        0x37E90         Android bootimg, kernel size: 1851876096 bytes, kernel addr: 0x746F6E20, ramdisk size: 1936028704 bytes, ramdisk addr: 0x69742074, product name: "timer 1 now"
+285696        0x45C00         Flattened device tree, size: 72620 bytes, version: 17
+655360        0xA0000         uImage header, header size: 64 bytes, header CRC: 0x3077357C, created: 2022-07-07 10:56:03, image size: 2224312 bytes, Data Address: 0x40008000, Entry Point: 0x40008000, data CRC: 0xBE005203, OS: Linux, CPU: ARM, image type: OS Kernel Image, compression type: none, image name: "ARM OpenWrt Linux-4.9.118"
+670363        0xA3A9B         xz compressed data
+670697        0xA3BE9         xz compressed data
+2883584       0x2C0000        uImage header, header size: 64 bytes, header CRC: 0x3077357C, created: 2022-07-07 10:56:03, image size: 2224312 bytes, Data Address: 0x40008000, Entry Point: 0x40008000, data CRC: 0xBE005203, OS: Linux, CPU: ARM, image type: OS Kernel Image, compression type: none, image name: "ARM OpenWrt Linux-4.9.118"
+2898587       0x2C3A9B        xz compressed data
+2898921       0x2C3BE9        xz compressed data
+5111808       0x4E0000        Squashfs filesystem, little endian, version 4.0, compression:xz, size: 3092733 bytes, 490 inodes, blocksize: 262144 bytes, created: 2023-07-14 01:20:17
+8257536       0x7E0000        Squashfs filesystem, little endian, version 4.0, compression:xz, size: 6067390 bytes, 151 inodes, blocksize: 262144 bytes, created: 2023-07-14 01:20:22
+14876684      0xE3000C        JFFS2 filesystem, little endian
+14877244      0xE3023C        Zlib compressed data, compressed
+14878688      0xE307E0        Zlib compressed data, compressed
+14880780      0xE3100C        JFFS2 filesystem, little endian
+15919140      0xF2E824        Zlib compressed data, compressed
+15919232      0xF2E880        Zlib compressed data, compressed
+15919476      0xF2E974        JFFS2 filesystem, little endian
+15919784      0xF2EAA8        Zlib compressed data, compressed
+15920372      0xF2ECF4        Zlib compressed data, compressed
+15920464      0xF2ED50        Zlib compressed data, compressed
+15920556      0xF2EDAC        Zlib compressed data, compressed
+15920648      0xF2EE08        Zlib compressed data, compressed
+15920740      0xF2EE64        Zlib compressed data, compressed
+15920764      0xF2EE7C        JFFS2 filesystem, little endian
+16420944      0xFA9050        Zlib compressed data, compressed
+16421560      0xFA92B8        JFFS2 filesystem, little endian
+16421680      0xFA9330        Zlib compressed data, compressed
+16421784      0xFA9398        Zlib compressed data, compressed
+16424960      0xFAA000        JFFS2 filesystem, little endian
+16746340      0xFF8764        JFFS2 filesystem, little endian
+16748624      0xFF9050        Zlib compressed data, compressed
+16750804      0xFF98D4        Zlib compressed data, compressed
+16752292      0xFF9EA4        JFFS2 filesystem, little endian
+

@@ -1,0 +1,9 @@
+Package: libnl-nf
+Version: 3.2.21-1
+Depends: libc, libnl-route
+Source: package/libs/libnl
+License: LGPL-2.1
+Section: libs
+Architecture: sunxi
+Installed-Size: 22633
+Description:  Netfilter Netlink Library Functions

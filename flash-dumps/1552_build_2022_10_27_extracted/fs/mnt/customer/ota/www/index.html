@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+	<meta http-equiv="expires" content="0">
+	<title> </title>
+	<link rel="stylesheet" href="/css/weui.min.css">
+	<script src="/js/weui.min.js"></script>
+	<script src="/js/aliyun-oss-sdk.min.js"></script>
+	<script src="/js/cpbox.js"></script>
+	<style>
+		.title { margin-top: .77em; margin-bottom: .3em; padding-left: 15px; padding-right:
+		15px; background: #ddd; font-size: 1.6rem; } 
+		#txt11 { font-size: 1.2rem; color: #999999 } 
+		input::-webkit-input-placeholder {color: #ccc; } 
+		input::input-placeholder { color: #ccc; }
+		textarea::-webkit-input-placeholder { color: #ccc; }
+		textarea::input-placeholder { color: #ccc; }
+		.weui-cell .weui-btn { width: 45%; margin-top: 0;}
+		.hide {display: none;}
+	</style>
+</head>
+<body ontouchstart>
+<div class="container" id="container"></div>
+<script type="text/html" id="tpl_home">
+<div class="page">
+	<div class="cells">
+		<div class="title" id="txt0"></div>
+		<div class="weui-cell">
+			<div class="weui-cell__bd"><p id="txt1"></p></div>
+			<div class="weui-cell__ft" id="fw_no"></div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__bd"><p>UUID</p></div>
+			<div class="weui-cell__ft" id="uuid"></div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__bd"><p>MODEL</p></div>
+			<div class="weui-cell__ft" id="hw_no"></div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__bd"><p>IMEI</p></div>
+			<div class="weui-cell__ft" id="imei"></div>
+		</div>
+	</div>
+	<div class="cells">
+		<div class="title" id="txt2"></div>
+		<a class="weui-cell weui-cell_access" id="div_rst" href="javascript:onRst();">
+			<div class="weui-cell__bd"><p id="txt19"></p></div>
+			<div class="weui-cell__ft" id="rst"></div>
+		</a>
+		<a class="weui-cell weui-cell_access" href="javascript:onPix();">
+			<div class="weui-cell__bd"><p id="txt23"></p></div>
+			<div class="weui-cell__ft" id="pix"></div>
+		</a>
+		<a class="weui-cell weui-cell_access" href="javascript:onWiFi();">
+			<div class="weui-cell__bd"><p>WiFi</p></div>
+			<div class="weui-cell__ft" id="wifi"></div>
+		</a>
+		<a class="weui-cell weui-cell_access" href="javascript:onBtNet();">
+			<div class="weui-cell__bd"><p>BT Modem</p></div>
+			<div class="weui-cell__ft" id="btnet">ON</div>
+		</a>
+		<a class="weui-cell weui-cell_access" id="ly1347" href="javascript:onIcon();">
+			<div class="weui-cell__bd"><p>图标设置</p></div>
+			<div class="weui-cell__ft" id="icon">HOME</div>
+		</a>
+	</div>
+	<div class="cells">
+		<div class="title" id="apn_set"></div>
+		<div class="weui-cell">
+			<div class="weui-cell__hd"><label class="weui-label" id="APN">APN</label></div>
+			<div class="weui-cell__bd"><input class="weui-input" type="text" id="apn0"></div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__hd"><label class="weui-label" id="name"></label></div>
+			<div class="weui-cell__bd"><input class="weui-input" type="text" id="apn1"></div>
+		</div>
+		<div class="weui-cell">
+			<div class="weui-cell__hd"><label class="weui-label" id="psw"></label></div>
+			<div class="weui-cell__bd"><input class="weui-input" type="text" id="apn2"></div>
+		</div>
+		<a class="weui-cell weui-cell_access" href="javascript:onAPN3();">
+			<div class="weui-cell__bd"><p id="type"></p></div>
+			<div class="weui-cell__ft" id="apn3"></div>
+		</a>
+		<a class="weui-cell weui-cell_access" href="javascript:onAPN4();">
+			<div class="weui-cell__bd"><p id="prot"></p></div>
+			<div class="weui-cell__ft" id="apn4"></div>
+		</a>
+		<div class="weui-cell">
+			<a href="javascript:onAPN();" class="weui-btn weui-btn_primary" id="txt22"></a>
+			<a href="javascript:onCLS();" class="weui-btn weui-btn_default" id="txt21"></a>
+		</div>
+	</div>
+	<div class="cells">
+		<div class="title" id="txt4"></div>
+		<div class="weui-cells__title" style="color: #111;"><label id="txt8"></label><label>:</label></div>
+		<div class="weui-cells weui-cells_form">
+			<div class="weui-cell">
+				<div class="weui-cell__bd">
+					<textarea class="weui-textarea" rows="5" id="txt_desc"></textarea>
+				</div>
+			</div>
+		</div>
+		<a href="javascript:onCommit();" class="weui-btn weui-btn_primary" id="txt9"></a>
+	</div>
+	<div class="cells">
+		<div class="title" id="txt10"></div>
+		<div class="page__bd">
+			<div class="weui-loadmore">
+				<i class="weui-loading" id="fw_sta"></i>
+				<span class="weui-loadmore__tips" id="txt11"></span>
+				<div class="page__bd page__bd_spacing" id="fw_prog_bd" style="display:none">
+					<div class="weui-progress">
+						<div class="weui-progress__bar">
+							<div class="weui-progress__inner-bar js_progress" style="width: 0%;" id="fw_prog"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="weui-panel" id="p2p">
+				<a href="javascript:switchP2P();" class="weui-btn weui-btn_warn">Switch P2P</a>
+			</div>
+			<div class="weui-panel" id="fw_sec" style="display: none">
+				<a href="javascript:onUpdate();" class="weui-btn weui-btn_warn" id="txt12"></a>
+				<div class="weui-panel__bd">
+					<div class="weui-media-box weui-media-box_text">
+						<section><h3 id="txt13"></h3><p id="fw_desc"></p></section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="weui-footer">
+		<p class="weui-footer__text"></br>Copyright©2022 - 2023</p>
+	</div>
+</div>
+</script>
+<script>
+	var mData = { model: {}, icon: {}};
+	var pixlb = ['HD', 'SD', 'Auto'];
+	window.onload = my_onload;
+
+	function si(i,n) {
+		var d = document.getElementById(i);
+		if (d) d.innerHTML = n;
+	}
+
+	function hp(i) {
+		var d = document.getElementById(i);
+		if (d) d.parentElement.className = 'hide';
+	}
+
+	async function queryHW() {
+		await fetch("hw.json").then(r => {
+			if(r.status == 200) return r.json();
+			throw Error('n/a');
+		}).then(j => {
+			var a = mData.appver.split('.');
+			if (j.hw == 'BT_Network' || (a.length > 2 && a[1] == '1552')) {
+				hp('btnet');
+				hp('imei');
+				hp('apn_set');
+				si('hw_no', 'BT_PanNet');
+			} else {
+				si("hw_no", j.hw);
+				si("imei", j.imei);
+			}
+		}).catch(e => {
+			si("hw_no", e.message);
+		});
+	}
+	
+	function my_onload() {
+		go_tpl("tpl_home");
+		
+		if (navigator.userAgent.indexOf("ndroid") == -1) {
+			document.getElementById("p2p").style.display = "none";
+		}
+
+		fetch("/cgi-bin/index.cgi?id=host").then(r => r.json()).then(j => {
+			var rs = j.res;
+			var appver = "";
+			var hide_div = true;
+			if (j.sys != null && j.sys.appver != null) {
+				if (j.update == 4) {
+					mData.appver = '00000000' + j.sys.appver.substr(8);
+				} else {
+					mData.appver = j.sys.appver;
+				}
+				appver = j.sys.appver.slice(-6, -2);
+			} else {
+				mData.appver = "0";
+			}
+			for (var vn of ['1347']) {
+				if (appver == vn) {
+					hide_div = false;
+					break;
+				}
+			}
+			if (hide_div) { document.getElementById('ly1347').style.display = "none"; }
+			else { hp('btnet'); }
+			si("fw_no", mData.appver);
+			si("apn_set", 'APN ' + rs.txt[2]);
+			for (var i = 0; i < rs.txt.length; i++) {
+				si("txt" + i, rs.txt[i]);
+			}
+			for (var key in rs.fix) {
+				var ele = document.getElementById('txt_' + key);
+				if (ele) { ele.placeholder = rs.fix[key]; }
+				si(key, rs.fix[key]);
+			}
+			if (j.sn == null) {
+				mData.sn = '##';
+			} else {
+				mData.sn = j.sn;
+			}
+			if (j.bt != null) { mData.bt = j.bt; }
+			if (j.wifi != null) { 
+				mData.wifi = j.wifi.replace(/:/g, '');
+				si('uuid', mData.wifi);
+			}
+			if (j.sig != null) { si('wifi', j.sig); }
+			if (j.pix != null) {
+				if (j.pix > 0) j.pix --;
+				if (j.pix < pixlb.length) si("pix", pixlb[j.pix]);
+			}
+			if (j.btnet == 1) {
+				si('btnet', 'OFF');
+			} else if (j.btnet == 2) {
+				si('btnet', 'ON');
+			}
+			if (j.name && j.name != '') si("icon", j.name);
+			if (j.apn) {
+				var a = j.apn.split('|');
+				for (var i = 0; i < 5 && i < a.length; i++) {
+					var ele = document.getElementById('apn' + i);
+					if (ele) {
+						if (i < 3) {
+							ele.placeholder = a[i];
+							ele.value = a[i];
+						} else {
+							ele.innerHTML = a[i];
+						}
+					}
+				}
+			}
+			queryHW();
+			cpbox_init(j);
+			queryNewVer();
+		}).catch(e => {
+			si("container", e);
+			setTimeout(my_onload, 3000);
+		});
+	}
+	
+	function switchP2P() {
+		fetch("/cgi-bin/index.cgi?id=p2p").then(r => {
+			if (r.status == 200) {
+				document.write(r.json().msg);
+			} else {
+				alert(r.json());
+			}
+		}).catch(e => {
+			alert('switch P2P OK!!!');
+		});
+	}
+	
+	function heart() {
+		fetch("/cgi-bin/index.cgi?id=host").then(r => r.json()).then(j => {
+			if (j.model != null) {
+				si('model', mData.model[j.model]);
+			} else {
+				setTimeout(heart, 3000);
+			}
+		}).catch(e => {
+			si('model', e.message);
+			setTimeout(heart, 3000);
+		});
+	}
+	
+	async function queryNewVer() {
+		try {
+			await fetch(cpbox_geturl(), {headers: {'Cache-Control': 'no-cache'}}).then(r => {
+				if (r.status == 200) {
+					return r.json();
+				} 
+				throw "st=" + r.status;
+			}).then(j => setfwurl(j));
+		} catch(e) {
+			console.log("qv: " + e);
+			setTimeout(queryNewVer, 3000);
+		}
+	}
+	
+	function showNewVer(j) {
+		if (j.url != null) {
+			mData.url = j.url;
+			si('txt11', findVer() + "</br>" + j.appver);
+			document.getElementById("fw_sec").style.display = "block";
+			si('fw_desc', j.msg);
+		} else {
+			si('txt11', lastedVer());
+		}
+		document.getElementById("fw_sta").style.display = "none";
+		document.getElementById("p2p").style.display = "none";
+	}
+	
+	function setfwurl(j) {
+		if (j.test != null && mData.sn != null && mData.wifi != null) {
+			var str = mData.sn + mData.wifi;
+			for (var test of j.test) {
+				if (test.sn != null) {
+					for (var sn of test.sn.split(',')) {
+						if (sn == str.slice(- sn.length)) {
+							if (test.appver > mData.appver) {
+								console.log("test version: " + test.appver);
+								showNewVer(test);
+							} else {
+								showNewVer({});
+							}
+							return;
+						}
+					}
+				}
+			}
+		}
+		if (j.appver > mData.appver) {
+			console.log("new ver: " + j.appver);
+			showNewVer(j);
+		} else {
+			showNewVer({});
+		}
+	}
+
+	function go_tpl(n) {
+		var h = document.getElementById(n);
+		if (h) si('container', h.innerHTML);
+	}
+
+	function onRst() {
+		var funcs = [
+			{label: document.getElementById("txt19").innerHTML, value: "1"},
+		];
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				var url = "/cgi-bin/index.cgi?id=set&rst=" + result[0].value;
+				fetch(url).then(r => r.json()).then(j => {
+					if (j.code != 0) {
+						si("rst", "fail (" + j.code + ")");
+					} else {
+						si("rst", "OK");
+					}
+				}).catch(e => {
+					si("rst", e.name);
+				});
+			}
+		});
+	}
+	
+	function onPix() {
+		var funcs = [];
+		for (var i = 0; i < pixlb.length; i++) {
+			funcs.push({label: pixlb[i], value: i + 1});
+		}
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				var url = "/cgi-bin/index.cgi?id=set&pix=" + result[0].value;
+				si("pix", result[0].label);
+				fetch(url).then(r => r.json()).then(j => {
+					if (j.code != 0) {
+						si("pix", "fail (" + j.code + ")");
+					}
+				}).catch(e => {
+					si("pix", e.name);
+				});
+			}
+		});
+	}
+	
+	function onWiFi() {
+		var sig = [6,36,40,44,48,149,153,157,161,165];
+		var funcs = [];
+		for (var s of sig) {
+			funcs.push({label: s, value: s});
+		}
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				var url = "/cgi-bin/index.cgi?id=set&wifi=" + result[0].value;
+				si("wifi", result[0].label);
+				fetch(url).then(r => r.json()).then(j => {
+					if (j.code != 0) {
+						si("wifi", "fail (" + j.code + ")");
+					}
+				}).catch(e => {
+					si("wifi", e.name);
+				});
+			}
+		});
+	}
+
+	function onBtNet() {
+		var funcs = [{label: 'OFF', value: 0}, {label: 'ON', value: 1}];
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				var url = "/cgi-bin/index.cgi?id=set&btnet=" + result[0].value;
+				si("btnet", result[0].label);
+				fetch(url).then(r => r.json()).then(j => {
+					if (j.code != 0) {
+						si("btnet", "fail (" + j.code + ")");
+					}
+				}).catch(e => {
+					si("btnet", e.name);
+				});
+			}
+		});
+	}
+	
+	function onIcon() {
+		var funcs = [{label: 'HOME', value: null}, {label: 'Tesla', value: 'tsl0'}];
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				var url = "/cgi-bin/index.cgi?id=set&icon=";
+				if (result[0].value) {
+					url += result[0].value + result[0].label;
+				}
+				si("icon", result[0].label);
+				fetch(url).then(r => r.json()).then(j => {
+					if (j.code != 0) {
+						si("icon", "fail (" + j.code + ")");
+					}
+				}).catch(e => {
+					si("icon", e.name);
+				});
+			}
+		});
+	}
+
+	function onCommit() {
+		var j = {
+			appver: mData.appver,
+			sn: mData.sn,
+			wifi: mData.wifi,
+			bt: mData.bt
+		};
+		var d = document.getElementById("txt_desc");
+		if (d) {j['desc'] = d.value;}
+		
+		console.log(j);
+		update_log(j);
+	}
+
+	function onAPN3() {
+		var a = ['NONE','PAP','CHAP'];
+		var funcs = [];
+		for (var s of a) { funcs.push({label: s}); }
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				si("apn3", result[0].label);
+			}
+		});
+	}
+
+	function onAPN4() {
+		var a = ['IP','IPV4V6'];
+		var funcs = [];
+		for (var s of a) { funcs.push({label: s}); }
+		weui.picker(funcs, {
+			onChange: function(result) {
+				console.log(JSON.stringify(result));
+			},
+			onConfirm: function(result) {
+				si("apn4", result[0].label);
+			}
+		});
+	}
+
+	function onAPN() {
+		var c = [];
+		for (var i = 0; i < 5; i++) {
+			var d = document.getElementById('apn' + i);
+			if (d) {
+				if (i < 3) c.push(d.value); 
+				else c.push(d.innerHTML);
+			}
+		}
+		updateAPN(c.join('|'));
+	}
+
+	function onCLS() {
+		for (var i = 0; i < 5; i++) {
+			var d = document.getElementById('apn' + i);
+			if (i < 3) d.value = '';
+			else d.innerHTML = '';
+		}
+	}
+
+	function onUpdate() {
+		if (mData.url != null) {
+			update_fw(mData.url + "?t=" + Math.random());
+		} else {
+			alert("unknown: " + mData.url);
+		}
+	}
+</script>
+</body>
+</html>

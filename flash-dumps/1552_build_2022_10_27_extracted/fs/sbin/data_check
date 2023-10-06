@@ -1,0 +1,16 @@
+#!/bin/sh
+
+date_partitions_name=/mnt/UDISK
+data_available_limit=200
+
+data_partitions_info=`df -T ${date_partitions_name}`
+data_available_size=`echo df "${data_partitions_info}" | awk '/^\// {print $5}'`
+
+if [ "${data_available_size}" -lt "${data_available_limit}" ];then
+echo "data partitions small space "
+rm -fr ${date_partitions_name}/*
+else
+echo "data partitions have ${data_available_size}"
+fi
+
+

@@ -1,0 +1,9 @@
+Package: busybox-init-base-files
+Version: 167-1682422782
+Depends: libc
+Source: package/busybox-init-base-files
+License: GPL-2.0
+Section: base
+Architecture: sunxi
+Installed-Size: 64782
+Description:  This package contains a busybox init base filesystem and system scripts for OpenWrt.

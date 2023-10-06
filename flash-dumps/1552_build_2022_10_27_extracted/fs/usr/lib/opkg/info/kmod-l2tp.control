@@ -1,0 +1,10 @@
+Package: kmod-l2tp
+Version: 4.9.118-1
+Depends: kernel (=4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-udptunnel4, kmod-udptunnel6
+Source: package/kernel/linux
+License: GPLv2
+Section: kernel
+Status: unknown hold not-installed
+Architecture: sunxi
+Installed-Size: 197
+Description:  Kernel modules for L2TP V3 Support

@@ -1,0 +1,10 @@
+Package: kmod-crypto-aead
+Version: 4.9.118-1
+Depends: kernel (=4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Source: package/kernel/linux
+License: GPLv2
+Section: kernel
+Status: unknown hold not-installed
+Architecture: sunxi
+Installed-Size: 233
+Description:  CryptoAPI AEAD support

@@ -1,0 +1,8 @@
+Package: ly-system
+Version: 0.0.1-1
+Depends: libc, zlib, libstdcpp, libnl-tiny, libubus, libubus, libnl-genl, libnl
+Source: package/allwinner/liaoyuan/system
+Section: utils
+Architecture: sunxi
+Installed-Size: 1467548
+Description:  ly-system-service

@@ -1,0 +1,9 @@
+Package: eyesee-mpp-external
+Version: 1.0-1
+Depends: libc, libsqlite3, glog
+Source: package/allwinner/eyesee-mpp/external
+Section: eyesee-mpp-external
+Maintainer: AW-PDC-PD5
+Architecture: sunxi
+Installed-Size: 52091
+Description:  eyesee-mpp-external contains some external libs which are needed by other mpp modules.

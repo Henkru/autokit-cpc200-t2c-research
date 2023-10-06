@@ -1,0 +1,9 @@
+Package: eyesee-mpp-framework
+Version: 1.0-1
+Depends: libc, eyesee-mpp-middleware
+Source: package/allwinner/eyesee-mpp/framework
+Section: eyesee-mpp-framework
+Maintainer: AW-PDC-PD5
+Architecture: sunxi
+Installed-Size: 183
+Description:  eyesee-mpp-framework wraps uses of eyesee-mpp-middleware, provide simple class interface to apps.

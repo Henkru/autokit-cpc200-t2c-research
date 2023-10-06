@@ -1,0 +1,11 @@
+Package: glog
+Version: 0.3.5-2
+Depends: libc, libstdcpp, libpthread
+Source: package/libs/libglog
+License: BSD-3-Clause
+Section: libs
+Maintainer: Amir Sabbaghi <amir@pichak.co>
+Architecture: sunxi
+Installed-Size: 35617
+Description:  This repository contains a C++ implementation of the Google logging
+ module.  Documentation for the implementation is in doc/.

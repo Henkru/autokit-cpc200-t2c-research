@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>microphone test</title>
+<meta charset="utf-8">
+<style>
+body {
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.button {
+    font-size: larger;
+    background-color:darkgrey;
+    padding: 10px 50px;
+    margin: 10px;
+}
+.ok {
+    color: green;
+}
+.ng {
+    color: red;
+}
+p {
+    font-size:larger;
+}
+canvas {
+    width: 100%;
+    height: 500px;
+    border: 1px solid white;
+    background-color:darkgreen;
+}
+a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+</style>
+</head>
+<body>
+<canvas id="wave" width="2000" height="2000"></canvas>
+<div class="buttons"><div class="button"><a href="/">返回</a></div><div class="button"><a id="mic" href="#">测试</a></div></div>
+<p id="res"></p>
+<script>
+var test_mic = false;
+document.addEventListener("DOMContentLoaded", function() {
+    var vid = document.getElementById('mic');
+    mic.addEventListener('click', function() {
+        if (test_mic) {
+            return;
+        }
+        test_mic = true;
+        var n = document.getElementById('res');
+        n.innerHTML = 'waiting...';
+        n = document.getElementById('wave');
+        n = n.getContext('2d');
+        n.fillStyle = 'darkgreen';
+        n.beginPath();
+        n.fillRect(0,0,2000,2000);
+        n.closePath();
+        fetch('/mic_test.pcm').then(r => r.arrayBuffer()).then(a => {
+            var pcm = new Int16Array(a.slice(2000));
+            var n = document.getElementById('wave');
+            let x = 0;
+            let y = 1000 - pcm[0] / 4;
+            let b = pcm[0];
+            let c = pcm[0];
+
+            n = n.getContext('2d');
+            n.lineWidth = 2;
+            n.strokeStyle = 'greenyellow';
+
+            for (;;) {
+                n.moveTo(x, y);
+                x ++;
+                y = 1000 - pcm[x] / 4;
+                if (pcm[x] < b) {
+                    b = pcm[x];
+                } else if (pcm[x] > c) {
+                    c = pcm[x];
+                }
+                if (y < 0) {
+                    y = 0;
+                } else if (y > 1999) {
+                    y = 1999;
+                }
+                n.lineTo(x, y);
+                if (x > 1998) {
+                    break;
+                }
+            }
+            n.stroke();
+            n = document.getElementById('res');
+            if (b < -200 || c > 200) {
+                n.className = 'ok';
+                n.innerHTML = 'microphone test OK (' + [b, c] + ')';
+            } else {
+                n.className = 'ng';
+                n.innerHTML = 'microphone test fail (' + [b, c] + ')';
+            }
+        }).catch(e => console.log(e.message)).finally(() => {
+            test_mic = false;
+        });
+    });
+});
+</script>
+</body>
+</html>

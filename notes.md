@@ -4,7 +4,7 @@
 
 ## Chips
 
-- Main SoC: unknown
+- Main SoC: Allwinner [V833](https://linux-sunxi.org/images/2/25/V833_V831_Datasheet_V1.1%28For_SoChip%29.pdf) (sun8iw19, Cortex-A7)
 - RAM: Samsung [K4B1G1646I-BCMA](https://semiconductor.samsung.com/dram/ddr/ddr3/k4b1g1646i-bcma/) (DDR3 1Gb)
 - Flash: Winbond [W25Q128JV](https://www.mouser.com/datasheet/2/949/w25q128jv_revf_03272018_plus-1489608.pdf) (16 MB, 3.3v)
 - WiFi/Bluetooth: unknown
@@ -88,6 +88,11 @@ SetKeyChainPath 93:carlife save keychain path:/mnt/UDISK/lylink ,name:carplay.ke
 mDNSResponder: Unable to parse DNS server list. Unicast DNS-SD unavailable
 mDNSResponder: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 101 (Network unreachable)
 ```
+## Serial Console
+
+- TTL 3.3v
+- Baudrate 115200
+- Input is disabled
 
 ## Firmware Updates
 
@@ -103,4 +108,12 @@ curl 'https://cpbox.oss-cn-shenzhen.aliyuncs.com/1552/version.json?rand=0.050047
 {"appver": "23061210.1552.1", "tsl": "23061210.4.9", "url": "https://cpbox.oss-cn-shenzhen.aliyuncs.com/1552/update_230612.img", "msg": "[2023-06-12] V4.9 </br>1.Add mode menu for the encoder.</br>2.Use pictures encoding by default.</br>1.增加编码器的模式菜单</br>2.默认使用图片编码", "test": [
 {"appver": "23123012.1552.1", "tsl": "23123012.4.9", "sn": "xxx", "url": "https://cpbox.oss-cn-shenzhen.aliyuncs.com/1552/test.img", "msg": " This is test version."}
 ]}
+```
+
+## Device Tree
+
+Decompiling the Device Tree (DTB)
+
+```
+dtc -I dtb -O dts <your DTB> -o <dts filename>
 ```

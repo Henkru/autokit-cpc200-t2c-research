@@ -1,0 +1,88 @@
+#!/bin/sh
+#echo "------run profile file-----"
+[ -f /etc/banner ] && cat /etc/banner
+[ -e /tmp/.failsafe ] && cat /etc/banner.failsafe
+fgrep -sq '/ overlay ro,' /proc/mounts && {
+	echo 'Your JFFS2-partition seems full and overlayfs is mounted read-only.'
+	echo 'Please try to remove files from /overlay/upper/... and reboot!'
+}
+
+export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
+export HOME=$(grep -e "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
+export HOME=${HOME:-/root}
+export PS1='\u@\h:\w\$ '
+export LD_LIBRARY_PATH=/mnt/customer/eyesee-mpp:/mnt/UDISK/app:/mnt/customer/app:/usr/lib/eyesee-mpp:${LD_LIBRARY_PATH}
+export PATH=/mnt/UDISK/app:/mnt/customer/app:${PATH}
+export LY_PLATFORM=v831
+ulimit -c unlimited
+mount -t debugfs none /sys/kernel/debug
+
+[ -x /bin/more ] || alias more=less
+[ -x /usr/bin/vim ] && alias vi=vim || alias vim=vi
+
+[ -z "$KSH_VERSION" -o \! -s /etc/mkshrc ] || . /etc/mkshrc
+
+[ -x /usr/bin/arp ] || arp() { cat /proc/net/arp; }
+[ -x /usr/bin/ldd ] || ldd() { LD_TRACE_LOADED_OBJECTS=1 $*; }
+
+[ -n "$FAILSAFE" ] || {
+	for FILE in /etc/profile.d/*.sh; do
+		[ -e "$FILE" ] && . "$FILE"
+	done
+	unset FILE
+}
+[ -x /bin/ll ] || alias ll='ls -al'
+
+
+CUSTOM_NAME=`fw_printenv -n custom_name=`
+#echo "CUSTOM_NAME=$CUSTOM_NAME"
+
+export LY_CHIPID=$(cat /sys/class/misc/ly_misc_dev/ly/chipid)
+
+product_id=$(cat /sys/devices/virtual/misc/ly_misc_dev/ly/product_number)
+product_id=`echo $product_id | tr "[a-z]" "[A-Z]"`
+export PRODUCT_NAME=${CUSTOM_NAME}_$product_id
+export BT_NAME=${CUSTOM_NAME}_$product_id
+export WIFI_NAME=${CUSTOM_NAME}_$product_id
+export WIFI_MODULE=8821cs
+
+export LY_HW_ENCRY=$(cat /sys/devices/virtual/misc/ly_misc_dev/ly/ly_hw_encry)
+
+LY_BOOT_MODE=`fw_printenv -n ly_boot_mode=`
+if [ $LY_BOOT_MODE == 'update' ];then
+	VERSION=`cut -d '"' -f 12 /etc/system.json | cut -d '"' -f 1`
+else
+	VERSION=`cut -d '"' -f 12 /mnt/customer/app/system.json | cut -d '"' -f 1`
+fi
+
+VERSION_LEN=${#VERSION}
+
+if [ "$VERSION_LEN" -eq 15 ];then
+	VERSION_PROJECT=ly${VERSION:9:4}
+	PROJECT=`fw_printenv -n ly_project_name`
+
+	if [ "$VERSION_PROJECT" == "$PROJECT" ];then
+		export LY_VERSION=$VERSION
+	else
+		echo "version project not eq ly_project_name"
+	fi
+else
+	echo "VERSION_LEN ERR=$VERSION_LEN"
+fi
+
+export model_mode=normal
+
+export update_reboot_time=`fw_printenv -n update_reboot_time`
+
+export IPADDR=192.168.3.1
+
+#LY_LED_MODE=`fw_printenv -n led_mode=`
+#if [ $LY_LED_MODE == '2' ];then
+	export ly_4g_module=$(cat /sys/devices/virtual/misc/ly_misc_dev/ly/ly_4g_module)
+	export ly_rt8761_module=$(cat /sys/devices/virtual/misc/ly_misc_dev/ly/ly_rt8761_module)
+#fi
+
+export WIFI_NAME_UDP=${CUSTOM_NAME}_${product_id}_UDP
+export UPDATE_SAVE_BT_DATA=yes
+ly_boot.sh &
+

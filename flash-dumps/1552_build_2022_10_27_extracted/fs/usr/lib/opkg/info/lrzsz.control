@@ -1,0 +1,11 @@
+Package: lrzsz
+Version: 0.12.20-2
+Depends: libc
+Source: package/utils/lrzsz
+Section: utils
+Architecture: sunxi
+Installed-Size: 48530
+Description:  Transfer files in your login sessions.
+ Very leightweight and straight forward.
+ You just need a terminal client that can do
+ either X, Y or Z-modem file transfers.

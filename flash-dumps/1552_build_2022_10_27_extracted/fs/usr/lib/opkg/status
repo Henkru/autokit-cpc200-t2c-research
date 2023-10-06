@@ -1,0 +1,488 @@
+Package: lrzsz
+Version: 0.12.20-2
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libnl-nf
+Version: 3.2.21-1
+Depends: libc, libnl-route
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-rtl8821cs_v59
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libc
+Version: -1
+Depends: libgcc
+Status: install hold installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-l2tp
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-udptunnel4, kmod-udptunnel6
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libpthread
+Version: -1
+Depends: libgcc
+Status: install hold installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-crypto-manager
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-crypto-aead, kmod-crypto-hash, kmod-crypto-pcompress
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-crypto-pcompress
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: alsa-lib
+Version: 1.1.4.1-1
+Depends: libc, libpthread, librt
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: busybox
+Version: 1.27.2-3
+Depends: libc
+Provides: ip
+Status: install user installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-crypto-hash
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-crypto-aead
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-lib-crc-ccitt
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: glog
+Version: 0.3.5-2
+Depends: libc, libstdcpp, libpthread
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: swupdate
+Version: 2019.04-1
+Depends: libc, zlib, libconfig, uboot-envtools, ota-burnboot
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-gre
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-iptunnel
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libpcre
+Version: 8.38-2
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libconfig
+Version: 1.4.9-1
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: eyesee-mpp-system
+Version: 1.0-1
+Depends: libc, glog, liblua, eyesee-mpp-external
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: uboot-envtools
+Version: 2018.03-2
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Conffiles:
+ /etc/fw_env.config 16240054c5679cdabe66253c77df852240
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: resolveip
+Version: 2
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-iptunnel
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: eyesee-mpp-framework
+Version: 1.0-1
+Depends: libc, eyesee-mpp-middleware
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: linux-atm
+Version: 2.5.2-5
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libnl-genl
+Version: 3.2.21-1
+Depends: libc, libnl-core
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: liblua
+Version: 5.1.5-1
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libip4tc
+Version: 1.4.21-2
+Depends: libc, libxtables
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: mtd-utils
+Version: 1.5.2-3
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-udptunnel4
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-udptunnel6
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: mtd-utils-mkfs.jffs2
+Version: 1.5.2-3
+Depends: libc, mtd-utils, zlib
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libnl
+Version: 3.2.21-1
+Depends: libc, libnl-genl, libnl-route, libnl-nf
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libstdcpp
+Version: -1
+Status: install hold installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libjson-c
+Version: 0.12-1
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libgcc
+Version: -1
+Status: install hold installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: busybox-init-base-files
+Version: 167-1682422782
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Conffiles:
+ /etc/inittab c79d27c65a553bdfcca2faf292e5af44d1
+ /etc/passwd 6a451aa33393f47ade89b8bce4d9711818
+ /etc/shadow 81cbbae0b8285ae075ad50613355d160b2
+ /etc/profile ca210bb3a17ba020d429e308e4011daf42
+ /etc/shells 8b35ce73c18161a7d7ed16fa244410993b
+Installed-Time: 1657191363
+
+Package: libreadline
+Version: 6.3-1
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libip6tc
+Version: 1.4.21-2
+Depends: libc, libxtables
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libuuid
+Version: 2.25.2-4
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: ly-app
+Version: 0.0.1-1
+Depends: libc, libnl-tiny, libubus, libubus, zlib, libstdcpp, liblog, libnl-genl, libnl
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libubox
+Version: 2016-02-26-5326ce1046425154ab715387949728cfb09f4083
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: librt
+Version: -1
+Depends: libpthread
+Status: install hold installed
+Essential: yes
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-crypto-ecb
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-crypto-manager
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: iptables
+Version: 1.4.21-2
+Depends: libc, kmod-ipt-core, libip4tc, libip6tc, libxtables
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: eyesee-mpp-middleware
+Version: 1.0-1
+Depends: libc, eyesee-mpp-system, zlib, alsa-lib
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: kmod-ipt-core
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-nf-ipt
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libubus
+Version: 2016-01-26-619f3a160de4f417226b69039538882787b3811c
+Depends: libc, libubox
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: mtd-utils-jffs2dump
+Version: 1.5.2-3
+Depends: libc, mtd-utils
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libnl-core
+Version: 3.2.21-1
+Depends: libc, libpthread
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libxtables
+Version: 1.4.21-2
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: zlib
+Version: 1.2.8-1
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: ly-system
+Version: 0.0.1-1
+Depends: libc, zlib, libstdcpp, libnl-tiny, libubus, libubus, libnl-genl, libnl
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: mtd-utils-jffs2reader
+Version: 1.5.2-3
+Depends: libc, mtd-utils, zlib
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-hello
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libnl-route
+Version: 3.2.21-1
+Depends: libc, libnl-core
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: ota-burnboot
+Version: 0.1-0.1
+Depends: libc, libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: libsqlite3
+Version: 3120200-1
+Depends: libc, libpthread
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: eyesee-mpp-external
+Version: 1.0-1
+Depends: libc, libsqlite3, glog
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: wget-nossl
+Version: 1.20.1-3
+Depends: libc, libpcre, zlib
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-atm
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71)
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kernel
+Version: 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71
+Depends: libc
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+Auto-Installed: yes
+
+Package: libnl-tiny
+Version: 0.1-5
+Depends: libc
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: jsonfilter
+Version: 2014-06-19-cdc760c58077f44fc40adbbe41e1556a67c1b9a9
+Depends: libc, libubox, libjson-c
+Status: install user installed
+Architecture: sunxi
+Installed-Time: 1657191363
+
+Package: kmod-crypto-sha1
+Version: 4.9.118-1
+Depends: kernel (= 4.9.118-1-d2eba8f5522b92e8ad92af55f5cadf71), kmod-crypto-hash
+Status: install hold installed
+Architecture: sunxi
+Installed-Time: 1657191363
+

@@ -1,0 +1,10 @@
+Package: uboot-envtools
+Version: 2018.03-2
+Depends: libc
+Source: package/utils/uboot-envtools
+License: GPL-2.0 GPL-2.0+
+LicenseFiles: Licenses/README
+Section: utils
+Architecture: sunxi
+Installed-Size: 12948
+Description:  This package includes tools to read and modify U-Boot bootloader environment.

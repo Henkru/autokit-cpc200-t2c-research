@@ -1,0 +1,8 @@
+Package: ly-app
+Version: 0.0.1-1
+Depends: libc, libnl-tiny, libubus, libubus, zlib, libstdcpp, liblog, libnl-genl, libnl
+Source: package/allwinner/liaoyuan/app
+Section: utils
+Architecture: sunxi
+Installed-Size: 2223760
+Description:  lyapp

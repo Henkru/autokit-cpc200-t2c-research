@@ -1,0 +1,9 @@
+Package: eyesee-mpp-middleware
+Version: 1.0-1
+Depends: libc, eyesee-mpp-system, zlib, alsa-lib
+Source: package/allwinner/eyesee-mpp/middleware
+Section: eyesee-mpp-middleware
+Maintainer: AW-PDC-PD5
+Architecture: sunxi
+Installed-Size: 330642
+Description:  eyesee-mpp-middleware contain eyesee-mpp basic libraries.

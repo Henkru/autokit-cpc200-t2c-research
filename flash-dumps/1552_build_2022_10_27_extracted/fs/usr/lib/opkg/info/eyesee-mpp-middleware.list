@@ -1,0 +1,11 @@
+/usr/lib/eyesee-mpp/libaw_wavdec.so
+/usr/lib/eyesee-mpp/libsample_confparser.so
+/usr/lib/eyesee-mpp/libaw_g711udec.so
+/usr/lib/eyesee-mpp/libcdx_base.so
+/usr/lib/eyesee-mpp/libaw_mp3dec.so
+/usr/lib/eyesee-mpp/libaw_g711adec.so
+/usr/lib/eyesee-mpp/libcdx_stream.so
+/usr/lib/eyesee-mpp/libcdx_common.so
+/usr/lib/eyesee-mpp/libaw_aacdec.so
+/etc/cedarx.conf
+/usr/lib/eyesee-mpp/libcdx_parser.so

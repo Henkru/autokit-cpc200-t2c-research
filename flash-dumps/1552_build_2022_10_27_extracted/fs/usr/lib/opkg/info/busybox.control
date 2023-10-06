@@ -1,0 +1,14 @@
+Package: busybox
+Version: 1.27.2-3
+Depends: libc
+Provides: ip
+Source: package/utils/busybox
+License: GPL-2.0
+LicenseFiles: LICENSE archival/libarchive/bz/LICENSE
+Section: base
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: sunxi
+Installed-Size: 219302
+Description:  The Swiss Army Knife of embedded Linux.
+ It slices, it dices, it makes Julian Fries.

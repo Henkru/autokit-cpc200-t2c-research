@@ -1,0 +1,9 @@
+Package: eyesee-mpp-system
+Version: 1.0-1
+Depends: libc, glog, liblua, eyesee-mpp-external
+Source: package/allwinner/eyesee-mpp/system/public
+Section: eyesee-mpp-system
+Maintainer: AW-PDC-PD5
+Architecture: sunxi
+Installed-Size: 112639
+Description:  eyesee-mpp-system is as eyesee-mpp low level libraries.

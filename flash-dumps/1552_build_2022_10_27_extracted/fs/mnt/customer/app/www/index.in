@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Link interface</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<div id="video" class="hidden" style="overflow:hidden;">
+		<img id="imgcp" class="hidden"/>
+		<canvas id="carplay" class="hidden"/>
+	</div>
+	<div class="container">
+		<nav class="side-nav">
+			<ul class="nav-links">
+				<li>
+					<a href="#" class="nav-item active" data-target="connection">
+						<img src="./img/menu/connect_off.png" class="img" alt="connection">
+						<img src="./img/menu/connect_on.png" class="img active" alt="connection">
+						<span>|000</span>
+					</a>
+				</li>
+				<li>
+					<a id="devlist" href="#" class="nav-item" data-target="device">
+						<img src="./img/menu/device_off.png" class="img" alt="device">
+						<img src="./img/menu/device_on.png" class="img active" alt="device">
+						<span>|001</span>
+					</a>
+				</li>
+				<li>
+					<a id="ntv" href="#" class="nav-item" data-target="cell">
+						<img src="./img/menu/4g_off.png" class="img" alt="cell">
+						<img src="./img/menu/4g_on.png" class="img active" alt="cell">
+						<span>|002</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="wifi">
+						<img src="./img/menu/wifi_off.png" class="img" alt="wifi">
+						<img src="./img/menu/wifi_on.png" class="img active" alt="wifi">
+						<span>|003</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="bluetooth">
+						<img src="./img/menu/bluetooth_off.png" class="img" alt="bluetooth">
+						<img src="./img/menu/bluetooth_on.png" class="img active" alt="bluetooth">
+						<span>|004</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="night">
+						<img src="./img/menu/night_off.png" class="img" alt="night">
+						<img src="./img/menu/night_on.png" class="img active" alt="night">
+						<span>|005</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="language">
+						<img src="./img/menu/language_off.png" class="img" alt="language">
+						<img src="./img/menu/language_on.png" class="img active" alt="language">
+						<span>|006</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="system">
+						<img src="./img/menu/system_off.png" class="img" alt="system">
+						<img src="./img/menu/system_on.png" class="img active" alt="system">
+						<span>|007</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-item" data-target="about">
+						<img src="./img/menu/about_off.png" class="img" alt="about">
+						<img src="./img/menu/about_on.png" class="img active" alt="about">
+						<span>|008</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:rf()" class="nav-rf button">|053</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="main-body">
+			<div class="main-menu">
+				<div class="menu-page show-up" id="connection">
+					<div class="connection-card">
+						<div>|009</div>
+						<img src="./img/func/line.png" class="img" alt="line">
+						<div class="bluetooth-code" id="bt1"></div>
+						<div id="qr" class="hidden"></div>
+						<span id="hc" class="hidden">|071</span>
+					</div>
+					<div class="connecting" id="connecting-connection">
+						<div id="loading-connection" class="loading-boll">
+							<div class="bar1"></div>
+							<div class="bar2"></div>
+							<div class="bar3"></div>
+							<div class="bar4"></div>
+							<div class="bar5"></div>
+							<div class="bar6"></div>
+							<div class="bar7"></div>
+							<div class="bar8"></div>
+						</div>
+						<div>|010</div>
+					</div>
+				</div>
+				<div class="menu-page" id="device">
+					<div class="item">
+						<div class="key">|011</div>
+						<input type="checkbox" class="checke" id="auto"></input>
+					</div>
+					<div class="item">
+						<div class="key">|012</div>
+						<div id="btlist"></div>
+						<div><span>|013</span> <span id="bt2"></span></div>
+					</div>
+					<div class="connecting" id="connecting-device">
+						<div id="loading-device" class="loading-boll">
+							<div class="bar1"></div>
+							<div class="bar2"></div>
+							<div class="bar3"></div>
+							<div class="bar4"></div>
+							<div class="bar5"></div>
+							<div class="bar6"></div>
+							<div class="bar7"></div>
+							<div class="bar8"></div>
+						</div>
+						<div>|010</div>
+					</div>
+				</div>
+				<div class="menu-page" id="cell">
+					<div class="item">
+						<div class="key">|015</div>
+						<div class="value" style="display:none;">|016</div>
+						<div class="value">|017</div>
+					</div>
+					<div class="item">
+						<div class="key">|018</div>
+						<div class="value s"><img id="cv" src="img/sig/0.png" onclick="cv()" /><div style="display:none;">x</div></div>
+					</div>
+					<div class="item">
+						<div class="key">|019</div>
+						<div class="value">N/A</div>
+					</div>
+					<div class="item"><div><span>IMEI:</span><span id="imei"></span></div></div>
+					<div class="item"><div><span>ICCID:</span><span id="iccd"></span></div></div>
+					<div id="ecard" class="hidden">
+						<div class="item"><div><span>当前套餐:</span><span id="ec0"></span></div></div>
+						<div class="item"><div><span>服务时间:</span><span id="ec00"></span></div></div>
+						<div class="infos">
+						<div>
+							<div class="item"><a href="#" id="fl" class="button">流量查询</a></div>
+							<div class="info"><div>总流量:</div><div id="ec01">100G</div></div>
+							<div class="info"><div>已用流量:</div><div id="ec02">100G</div></div>
+							<div class="info"><div>剩余流量:</div><div id="ec03">100G</div></div>
+							<div class="info"><div>当前速率:</div><div>高速</div></div>
+						</div>
+						<div>
+							<div class="info">实名认证及更多服务</div>
+							<div><img id="qrcode"></img></div>
+						</div>
+						</div>
+						<div class="item"><span>服务须知:</br>1.本流量服务由“翼卡车联网”提供流量购买成功后将立即生效，扣费成功后不支持退改。</br>2.此卡限当前设备使用，违反应用场景行为，将存在被运营商关停风险，使用方需承担由此产生的所有责任。</span></div>
+					</div>
+				</div>
+				<div class="menu-page" id="wifi">
+					<div class="item">
+						<div class="key">|022</div>
+						<div><span id="ssid"></span></div>
+					</div>
+					<div class="item">
+						<div class="key">|054</div>
+						<div class="psk"><span>|055</span><input type="password" id="psk" class="wp" onclick="psk(this)" readonly><a href="javascript:wp()" class="button">|056</a></div>
+					</div>
+					<div class="item">
+						<div class="key">|023</div>
+						<a href="javascript:whw()" class="button sig"><div id="swh"></div></a>
+					</div>
+				</div>
+				<div class="menu-page" id="bluetooth">
+					<div class="item">
+						<div class="key">|024</div>
+						<div><span id="bt3"></span></div>
+					</div>
+					<div class="item">
+						<div class="key">|025</div>
+						<input type="checkbox" id="sync" class="checke"></input>
+						<div><span id="btnet">|067</span></div>
+					</div>
+				</div>
+				<div class="menu-page" id="night">
+					<div class="item">
+						<div class="key">|026</div>
+						<input type="checkbox" id="night_off" class="checke"></input>
+					</div>
+					<div class="item">
+						<div class="key">|027</div>
+						<div id="nights" class="listbtn" style="width: 99%;">
+							<a href="#">OFF</a>
+							<a href="#">18:00～6:00</a>
+							<a href="#">19:00～7:00</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="key">|029</div>
+						<div id="pixels" class="listbtn" style="width: 99%;">
+							<a href="#" style="display:none;">|050</a>
+							<a href="#">|050</a>
+							<a href="#">|052</a>
+							<a href="#">|047</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="key">|068</div>
+						<div id="fps" class="listbtn" style="width: 99%;">
+							<a href="#">|069</a>
+							<a href="#">|052</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="key">|072</div>
+						<div id="mode" class="listbtn" style="width: 99%;">
+							<a href="#">|073</a>
+							<a href="#">|074</a>
+						</div>
+					</div>
+				</div>
+				<div class="menu-page" id="language">
+					<div class="item">
+						<div class="key">|028</div>
+						<div id="lans" class="lan">
+							<div><a href="#" class="n">简体中文</a></div>
+							<div><a href="#" class="n">繁体中文</a></div>
+							<div><a href="#" class="n">English</a></div>
+							<div><a href="#" class="n">|047</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="menu-page" id="system">
+					<div class="item">
+						<div class="key">|070</div>
+						<input type="checkbox" id="ol" class="checke"></input>
+					</div>
+					<div class="item">
+						<div class="key">|030</div>
+						<div id="drivers" class="listbtn" style="width: 80%;">
+							<a href="#">|031</a>
+							<a href="#">|032</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="key">|065</div>
+						<div><span>|066</span><input id="name" type="text" placeholder="Auto" maxlength="12" onblur="wsicon()"></div>
+					</div>
+					<div class="item">
+						<div class="key">|033</div>
+						<div class="icons">
+							<div id="icons">
+								<a href="javascript:icons(0)">|034</a>
+								<a href="javascript:icons(1)">|035</a>
+							</div>
+							<div id="icon"><div></div></div>
+						</div>
+						<div id="inc">
+							<span id="Tesla">@Tesla are trademarks of Tesla Inc.,<br>registered in the U.S. and other countries and regions.</span>
+						</div>
+					</div>
+				</div>
+				<div class="menu-page" id="about">
+					<div class="item">
+						<div class="key">|036</div>
+						<div class="divbtn">
+							<a href="#" id="fw" class="button">|036</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="key">|037</div>
+						<div id="sn" class="value"></div>
+					</div>
+					<div class="item">
+						<div class="key">|038</div>
+						<div id="sw" class="value"></div>
+					</div>
+					<div class="item">
+						<div class="key">|039</div>
+						<div id="hw" class="value"></div>
+						<div id="md" class="value" style="display:none;"></div>
+					</div>
+					<div class="item">
+						<div class="key">UUID</div>
+						<div id="uuid" class="value"></div>
+					</div>
+					<div class="item">
+						<div class="key">|048</div>
+						<div class="divbtn">
+							<a href="javascript:sd('rs')" class="button">|046</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="dialog" style="display: none;"></div>
+	<div id="backlist" class="hidden">llegal device!!</div>
+	<script type="text/html" id="nobt">
+		<div id="none">|014</div>
+	</script>
+	<script type="text/html" id="u0">
+		<div class="dialog">
+			<div class="t">
+				<div class="m">|040</div>
+			</div>
+			<div class="b">
+				<a href="javascript:cc()">|042</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="u1">
+		<div class="dialog">
+			<div class="t">
+				<div class="h">|041</div>
+				<div class="p"></div>
+			</div>
+			<div class="b">
+				<a href="#" onclick="onStart()">|042</a>
+				<hr/>
+				<a href="javascript:cc()">|043</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="u2">
+		<div class="dialog">
+			<div class="t">
+				<div class="m">|044</div>
+			</div>
+			<div class="b">
+				<a href="javascript:rf()">|042</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="u3">
+		<div class="dialog">
+			<div class="t">
+				<div class="m">|045</div>
+			</div>
+			<div class="b">
+				<a href="javascript:cc()">|042</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="u4">
+		<div class="pgd">
+            <img src="img/pg.png"/>
+			<div id="pgt">0%</div>
+		</div>
+	</script>
+	<script type="text/html" id="ba">
+		<div class="i" onclick="onsig(this)">
+			<div class="s"></div>
+			<div class="t">|047</div>
+		</div>
+	</script>
+	<script type="text/html" id="rs">
+		<div class="dialog">
+			<div class="t">
+				<div class="m">|049</div>
+			</div>
+			<div class="b">
+				<a href="javascript:rs()">|042</a>
+				<hr/>
+				<a href="javascript:cc()">|043</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="wp">
+		<div class="dialog">
+			<div class="t">
+				<div class="h">|057</div>
+				<div class="w">
+					<div>|058</div>
+					<input id="wpw" class="wp" type="text" maxlength="12">
+				</div>
+				<span class="s">|060</span>
+			</div>
+			<div class="b">
+				<a href="javascript:cc()">|043</a>
+				<hr/>
+				<a id="wps" href="javascript:wps()">|059</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="wh">
+		<div class="dialog">
+			<div id="sig">
+				<div class="g">
+					<a href="#">2.4GHz</a>
+					<a href="#">5GHz</a>
+				</div>
+				<div id="wl"></div>
+			</div>
+			<div class="b">
+				<a href="javascript:cc()">|043</a>
+				<hr/>
+				<a id="wps" href="javascript:whs()">|059</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="np">
+		<div class="dialog">
+			<div class="t">
+				<div class="m"><p>|061</p><span>|062</span></div>
+				<div id="ps" class="m">|063</div>
+			</div>
+			<div class="b">
+				<a href="javascript:cc()">|042</a>
+			</div>
+		</div>
+	</script>
+	<script type="text/html" id="nt">
+		<div class="dialog">
+			<div class="t">
+				<div class="m">|064</div>
+			</div>
+			<div class="b">
+				<a href="javascript:rf()">|042</a>
+				<hr/>
+				<a href="javascript:cc()">|043</a>
+			</div>
+		</div>
+	</script>
+	<script src="js/qrcode.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

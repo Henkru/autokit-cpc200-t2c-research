@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>ERROR</title>
+<meta charset="utf-8">
+<style>
+body {
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div {
+    margin-top: 40vh;
+    color:white;
+    font-size: 48px;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var id = 'zh';
+    if (navigator.language.startsWith("zh")) {
+        id = 'en';
+    }
+    document.getElementById(id).style.display = 'none';
+});
+</script>
+</head>
+<body>
+<div id="en">Video is not support</div>
+<div id="zh">视频解码不支持</div>
+</body>
+</html>

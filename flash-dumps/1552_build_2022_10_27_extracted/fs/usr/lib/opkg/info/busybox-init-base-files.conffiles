@@ -1,0 +1,5 @@
+/etc/inittab
+/etc/passwd
+/etc/shadow
+/etc/profile
+/etc/shells

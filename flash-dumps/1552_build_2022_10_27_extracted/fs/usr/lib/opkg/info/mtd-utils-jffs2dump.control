@@ -1,0 +1,8 @@
+Package: mtd-utils-jffs2dump
+Version: 1.5.2-3
+Depends: libc, mtd-utils
+Source: package/utils/mtd-utils
+Section: utils
+Architecture: sunxi
+Installed-Size: 7651
+Description:  jffs2dump package from mtd-utils
