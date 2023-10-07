@@ -7,7 +7,7 @@
 - Main SoC: Allwinner [V833](https://linux-sunxi.org/images/2/25/V833_V831_Datasheet_V1.1%28For_SoChip%29.pdf) (sun8iw19, Cortex-A7)
 - RAM: Samsung [K4B1G1646I-BCMA](https://semiconductor.samsung.com/dram/ddr/ddr3/k4b1g1646i-bcma/) (DDR3 1Gb)
 - Flash: Winbond [W25Q128JV](https://www.mouser.com/datasheet/2/949/w25q128jv_revf_03272018_plus-1489608.pdf) (16 MB, 3.3v)
-- WiFi/Bluetooth: unknown
+- WiFi/Bluetooth: Realtek RTL8821CS
 - LTE-Modem: Neoway [N58-EA](http://www.wless.ru/files/GSM/Neoway/N58/Neoway_N58_Product_Specifications_V2_4.pdf)
 
 ## Flash Pinout
@@ -20,6 +20,71 @@
 4 -| GND    DI |- 5
    -------------
 ```
+
+## Flash Structure
+
+| Start    | Size     | Partition   | Description             |
+| -------- | -------- | ----------- | ----------------------- |
+| 0x060000 | 0x040000 | env         | U-Boot env (reduntant)  |
+| 0x0A0000 | 0x220000 | boot        | uImage                  |
+| 0x2C0000 | 0x220000 | recovery    | uImage                  |
+| 0x4E0000 | 0x300000 | rootfs      | Root SquashFS           |
+| 0x7E0000 | 0x640000 | customer    | Customer SquashFS       |
+| 0xe20000 | 0x010000 | private     |                         |
+| 0xe30000 | 0x4a0000 | UDISK       | User Disk JFFS2         |
+
+From DTS:
+
+```
+partitions {
+    device_type = "partitions";
+
+    env {
+        device_type = "env";
+        offset = <0x20>;
+        size = <0x200>;
+    };
+
+    boot {
+        device_type = "boot";
+        offset = <0x220>;
+        size = <0x1100>;
+    };
+
+    recovery {
+        device_type = "recovery";
+        offset = <0x1320>;
+        size = <0x1100>;
+    };
+
+    rootfs {
+        device_type = "rootfs";
+        offset = <0x2420>;
+        size = <0x1800>;
+    };
+
+    customer {
+        device_type = "customer";
+        offset = <0x3c20>;
+        size = <0x3200>;
+    };
+
+    private {
+        device_type = "private";
+        offset = <0x6e20>;
+        size = <0x80>;
+    };
+
+    UDISK {
+        device_type = "UDISK";
+        offset = <0x6ea0>;
+        size = <0x00>;
+    };
+};
+```
+
+- Block size: 512
+- Base: 0x5c000 (This is figured out by cross referencing binwalk results and DTS. I'm not sure is this static between FWs)
 
 ## First Boot
 
@@ -117,3 +182,8 @@ Decompiling the Device Tree (DTB)
 ```
 dtc -I dtb -O dts <your DTB> -o <dts filename>
 ```
+
+## U-Boot env
+
+- Size: 0x20000 (/etc/fw_env.config)
+- Reduntant (header: crc32 + 1 byte)
