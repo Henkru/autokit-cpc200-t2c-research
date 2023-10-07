@@ -185,5 +185,18 @@ dtc -I dtb -O dts <your DTB> -o <dts filename>
 
 ## U-Boot env
 
+- The flash has two uboot env blobs: (0x060000, 0x080000)
 - Size: 0x20000 (/etc/fw_env.config)
-- Reduntant (header: crc32 + 1 byte)
+
+It has some weirdness, since looks like the header has the reduntant byte.
+However, it's `0` for both blobs, and the CRC32 value includes the reduntant byte.
+So, this acts like single uboot env (header is only the crc32).
+
+```bash
+$ xxd uboot-env.bin |head
+00000000: 894a 8162 0065 6172 6c79 7072 696e 746b  .J.b.earlyprintk
+00000010: 3d73 756e 7869 2d75 6172 742c 3078 3035  =sunxi-uart,0x05
+00000020: 3030 3030 3030 0069 6e69 7463 616c 6c5f  000000.initcall_
+00000030: 6465 6275 673d 3000 636f 6e73 6f6c 653d  debug=0.console=
+```
+
