@@ -1,4 +1,8 @@
-# Notes
+# Autokit CPC200 T2C research
+
+![device](images/1.jpeg)
+
+## Notes
 
 - PCB Rev: 20221019
 
@@ -22,6 +26,8 @@
 ```
 
 ## Flash Structure
+
+The stage0 needs to be figured out.
 
 | Start    | Size     | Partition   | Description             |
 | -------- | -------- | ----------- | ----------------------- |
@@ -84,7 +90,7 @@ partitions {
 ```
 
 - Block size: 512
-- Base: 0x5c000 (This is figured out by cross referencing binwalk results and DTS. I'm not sure is this static between FWs)
+- Base: 0x5c000 (This is figured out by cross-referencing binwalk results and DTS. I'm not sure, is this static between FWs)
 
 ## First Boot
 
@@ -157,7 +163,7 @@ mDNSResponder: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 101 (
 
 - TTL 3.3v
 - Baudrate 115200
-- Input is disabled
+- Input is disabled or does not react
 
 ## Firmware Updates
 
@@ -188,9 +194,9 @@ dtc -I dtb -O dts <your DTB> -o <dts filename>
 - The flash has two uboot env blobs: (0x060000, 0x080000)
 - Size: 0x20000 (/etc/fw_env.config)
 
-It has some weirdness, since looks like the header has the reduntant byte.
-However, it's `0` for both blobs, and the CRC32 value includes the reduntant byte.
-So, this acts like single uboot env (header is only the crc32).
+It has some weirdness since looks like the header has a redundant byte.
+However, it's `0` for both blobs, and the CRC32 value includes the redundant byte.
+So, this acts like a single uboot env (the header contains only the crc32 value).
 
 ```bash
 $ xxd uboot-env.bin |head
