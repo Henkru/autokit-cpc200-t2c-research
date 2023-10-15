@@ -4,6 +4,7 @@
 
 ## Notes
 
+- WiFi only model
 - PCB Rev: 20221019
 
 ## Chips
@@ -163,7 +164,34 @@ mDNSResponder: mDNSPlatformSourceAddrForDest: connect 1.1.1.1 failed errno 101 (
 
 - TTL 3.3v
 - Baudrate 115200
-- Input is disabled or does not react
+- Input is disabled by default
+  - uboot's `bootdelay=0`
+  - `/sys/module/sunxi_uart/parameters/debug_mode` = `0`
+
+To enable input:
+
+1. Patch `bootdelay=5` in uboot's env and reflash the firmware
+2. In uboot's console:
+   1. `env set ly_boot_mode adb`
+   2. `env save`
+   3. `boot`
+3. Create `/mnt/UDISK/app/httpd` and `chmod +x /mnt/UDISK/app/httpd`:
+
+```bash
+#!/bin/sh
+
+echo "[+] httpd hijack"
+echo "[+] enable debug uart"
+
+echo 1 > /sys/module/sunxi_uart/parameters/debug_mode
+
+/usr/sbin/httpd "$@"`
+```
+
+Restore `ly_boot_mode`:
+
+1. `env set ly_boot_mode normal`
+2. `env save`
 
 ## Firmware Updates
 
@@ -205,4 +233,46 @@ $ xxd uboot-env.bin |head
 00000020: 3030 3030 3030 0069 6e69 7463 616c 6c5f  000000.initcall_
 00000030: 6465 6275 673d 3000 636f 6e73 6f6c 653d  debug=0.console=
 ```
+## Misc
 
+```bash
+root@None:/# uname -a
+Linux None 4.9.118 #511 PREEMPT Tue Apr 25 11:47:33 UTC 2023 armv7l GNU/Linux
+root@None:/# cat /proc/cpuinfo
+processor       : 0
+model name      : ARMv7 Processor rev 5 (v7l)
+BogoMIPS        : 48.00
+Features        : half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xc07
+CPU revision    : 5
+
+Hardware        : sun8iw19
+Revision        : 0000
+Serial          : 0000000000000000
+
+root@None:/# cat /proc/cmdline
+earlyprintk=sunxi-uart,0x05000000 initcall_debug=0 console=ttyS0,115200 loglevel=3 root=/dev/mtdblock4 rootwait init=/pseudo_init rdinit=/rdinit partitions=env@mtdblock1:boot@mtdblock2:recovery@mtdblock3:rootfs@mtdblock4:customer@mtdblock5:private@mtdblock6:UDISK@mtdblock7 cma=4M coherent_pool=16K ion_carveout_list= led_mode=2 androidboot.hardware=sun8iw19p1 boot_type=3 androidboot.boot_type=3 gpt=1 uboot_message=(09/02/2022-18:42:57)
+root@None:/# cat /proc/mtd
+dev:    size   erasesize  name
+mtd0: 00060000 00001000 "uboot"
+mtd1: 00040000 00001000 "env"
+mtd2: 00220000 00001000 "boot"
+mtd3: 00220000 00001000 "recovery"
+mtd4: 00300000 00001000 "rootfs"
+mtd5: 00640000 00001000 "customer"
+mtd6: 00010000 00001000 "private"
+mtd7: 001d0000 00001000 "UDISK"
+
+root@None:/# df -Th
+Filesystem           Type            Size      Used Available Use% Mounted on
+/dev/root            squashfs        3.0M      3.0M         0 100% /
+devtmpfs             devtmpfs       58.5M         0     58.5M   0% /dev
+tmpfs                tmpfs          60.6M      4.0K     60.6M   0% /tmp
+/dev/by-name/customer
+                     squashfs        6.0M      6.0M         0 100% /mnt/customer
+/dev/by-name/UDISK   jffs2           1.8M   1020.0K    836.0K  55% /mnt/UDISK
+
+```
