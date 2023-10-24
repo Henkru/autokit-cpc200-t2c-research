@@ -800,3 +800,108 @@ root@None:/proc# dmesg
 [   18.432568] option 1-1:1.5: GSM modem (1-port) converter detected
 [   18.433196] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB1
 ```
+
+## checksec
+
+| RELRO         | STACK CANARY    | NX         | PIE    | RPATH    | RUNPATH    | Symbols    | FORTIFY | Fortified | Fortifiable | FILE       |
+|---------------|-----------------|------------|--------|----------|------------|------------|---------|-----------|-------------|------------|
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./bin/adbd |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./bin/busybox |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libc.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libgcc_s.so.1 |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/liblog.so |
+| Partial RELRO | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libstdc++.so.6.0.22 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libubox.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libubus.so |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/8821cs.ko |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/atm.ko |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/br2684.ko |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/crc-ccitt.ko |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/ecb.ko |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 6 | ./mnt/customer/app/dnssd |
+| **No RELRO**  | Canary found | NX enabled | PIE enabled | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/gocsdk |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 17 | ./mnt/customer/app/libGbtsTask.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 24 | ./mnt/customer/app/libcarplay.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/libdns_sd.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./mnt/customer/app/libiap.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 4 | ./mnt/customer/app/liblylinkaa.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 2 | ./mnt/customer/app/liblylinkclient.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | RPATH | No RUNPATH | No Symbols | No | 0 | 6 | ./mnt/customer/app/libprotobuf-lite.so.8 |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 11 | ./mnt/customer/app/lylinkapp |
+| Full RELRO    | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/lylinkui |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 12 | ./mnt/customer/app/mdnsd |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 11 | ./mnt/customer/app/ui/libcrypto.so.1.1 |
+| **No RELRO**  | Canary found | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/ui/liblylinkav.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 5 | ./mnt/customer/app/ui/liblylinkmw.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/ui/liblylinkpcm.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 1 | ./mnt/customer/app/ui/liblylinkserver.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 12 | ./mnt/customer/app/ui/liblylinkui.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 8 | ./mnt/customer/app/ui/liblymodel.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 5 | ./mnt/customer/app/ui/libssl.so.1.1 |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 16 | ./mnt/customer/app/ui/libwebsockets.so.15 |
+| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/update |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2.0.0 |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_aacdec.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711adec.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711udec.so |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_mp3dec.so |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_wavdec.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_base.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_common.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_parser.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_stream.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcutils.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libhwdisplay.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libion.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/librgb_ctrl.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libsample_confparser.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libsmartlink.so |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/8821cs.ko |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/atm.ko |
+| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/br2684.ko |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/crc-ccitt.ko |
+| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/ecb.ko |
+| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./mnt/customer/ota/www/cgi-bin/index.cgi |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./sbin/logcat |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./sbin/logwrapper |
+| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./sbin/update |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/civetweb |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/client |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/jsonfilter |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/lrz |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/lsz |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/newfs_msdos |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/ota-burnboot0 |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/ota-burnuboot |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/progress |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/reboot_efex |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/resolveip |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/swupdate |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/wget-nossl |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libconfig.so.9.1.3 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libglog.so.0.0.0 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libip4tc.so.0.1.0 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libip6tc.so.0.1.0 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext4.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext6.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libjson-c.so.2.0.1 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-3.so.200.16.1 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-genl-3.so.200.16.1 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-tiny.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libota-burnboot.so |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libpcre.so.1.2.6 |
+| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 15 | ./usr/lib/libwebsockets.so.15 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libxtables.so.10.0.0 |
+| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libz.so.1.2.8 |
+| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./usr/ota/www/cgi-bin/index.cgi |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/fw_printenv |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/hostapd |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/jffs2dump |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/jffs2reader |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/mdnsd |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/mkfs.jffs2 |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/wpa_cli |
+| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/wpa_supplicant |
+| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/xtables-multi |
