@@ -803,105 +803,106 @@ root@None:/proc# dmesg
 
 ## checksec
 
-| RELRO         | STACK CANARY    | NX         | PIE    | RPATH    | RUNPATH    | Symbols    | FORTIFY | Fortified | Fortifiable | FILE       |
-|---------------|-----------------|------------|--------|----------|------------|------------|---------|-----------|-------------|------------|
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./bin/adbd |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./bin/busybox |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libc.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libgcc_s.so.1 |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/liblog.so |
-| Partial RELRO | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libstdc++.so.6.0.22 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libubox.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./lib/libubus.so |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/8821cs.ko |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/atm.ko |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/br2684.ko |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/crc-ccitt.ko |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./lib/modules/4.9.118/ecb.ko |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 6 | ./mnt/customer/app/dnssd |
-| **No RELRO**  | Canary found | NX enabled | PIE enabled | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/gocsdk |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 17 | ./mnt/customer/app/libGbtsTask.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 24 | ./mnt/customer/app/libcarplay.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/libdns_sd.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./mnt/customer/app/libiap.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 4 | ./mnt/customer/app/liblylinkaa.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 2 | ./mnt/customer/app/liblylinkclient.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | RPATH | No RUNPATH | No Symbols | No | 0 | 6 | ./mnt/customer/app/libprotobuf-lite.so.8 |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 11 | ./mnt/customer/app/lylinkapp |
-| Full RELRO    | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/lylinkui |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 12 | ./mnt/customer/app/mdnsd |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 11 | ./mnt/customer/app/ui/libcrypto.so.1.1 |
-| **No RELRO**  | Canary found | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 14 | ./mnt/customer/app/ui/liblylinkav.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 5 | ./mnt/customer/app/ui/liblylinkmw.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/ui/liblylinkpcm.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 1 | ./mnt/customer/app/ui/liblylinkserver.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 12 | ./mnt/customer/app/ui/liblylinkui.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 8 | ./mnt/customer/app/ui/liblymodel.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 5 | ./mnt/customer/app/ui/libssl.so.1.1 |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 16 | ./mnt/customer/app/ui/libwebsockets.so.15 |
-| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./mnt/customer/app/update |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2.0.0 |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_aacdec.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711adec.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711udec.so |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_mp3dec.so |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_wavdec.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_base.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_common.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_parser.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_stream.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libcutils.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libhwdisplay.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libion.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/librgb_ctrl.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libsample_confparser.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./mnt/customer/eyesee-mpp/libsmartlink.so |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/8821cs.ko |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/atm.ko |
-| **No RELRO**  | Canary found | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/br2684.ko |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/crc-ccitt.ko |
-| **No RELRO**  | **No Canary fond** | **NX disabled** | REL | No RPATH | No RUNPATH | Symbols | No | 0 | 0 | ./mnt/customer/modules/ecb.ko |
-| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./mnt/customer/ota/www/cgi-bin/index.cgi |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./sbin/logcat |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./sbin/logwrapper |
-| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 7 | ./sbin/update |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/civetweb |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/client |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/jsonfilter |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/lrz |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/lsz |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/newfs_msdos |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/ota-burnboot0 |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/ota-burnuboot |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/progress |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/reboot_efex |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/resolveip |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/swupdate |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/bin/wget-nossl |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libconfig.so.9.1.3 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libglog.so.0.0.0 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libip4tc.so.0.1.0 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libip6tc.so.0.1.0 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext4.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libiptext6.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libjson-c.so.2.0.1 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-3.so.200.16.1 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-genl-3.so.200.16.1 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libnl-tiny.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libota-burnboot.so |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libpcre.so.1.2.6 |
-| **No RELRO**  | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 15 | ./usr/lib/libwebsockets.so.15 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libxtables.so.10.0.0 |
-| Full RELRO    | **No Canary fond** | NX enabled | DSO | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/lib/libz.so.1.2.8 |
-| **No RELRO**  | Canary found | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 9 | ./usr/ota/www/cgi-bin/index.cgi |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/fw_printenv |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/hostapd |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/jffs2dump |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/jffs2reader |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/mdnsd |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/mkfs.jffs2 |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/wpa_cli |
-| **No RELRO**  | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/wpa_supplicant |
-| Full RELRO    | **No Canary fond** | NX enabled | **No PIE** | No RPATH | No RUNPATH | No Symbols | No | 0 | 0 | ./usr/sbin/xtables-multi |
+| RELRO | STACK CANARY | NX | PIE | RPATH | RUNPATH | SYMBOLS | FORTIFY | Fortified | Fortifiable | FILE |
+|-------|--------------|----|-----|-------|---------|---------|---------|-----------|-------------|------|
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./bin/adbd |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./bin/busybox |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/libc.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/libgcc_s.so.1 |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/liblog.so |
+| ⚠️(Partial)  | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/libstdc++.so.6.0.22 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/libubox.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./lib/libubus.so |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./lib/modules/4.9.118/8821cs.ko |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./lib/modules/4.9.118/atm.ko |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./lib/modules/4.9.118/br2684.ko |
+| ❌ | ❌ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./lib/modules/4.9.118/crc-ccitt.ko |
+| ❌ | ❌ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./lib/modules/4.9.118/ecb.ko |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 6 | ./mnt/customer/app/dnssd |
+| ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | 0 | 14 | ./mnt/customer/app/gocsdk |
+| ❌ | ❌ | ❌ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 17 | ./mnt/customer/app/libGbtsTask.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 24 | ./mnt/customer/app/libcarplay.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 7 | ./mnt/customer/app/libdns_sd.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 9 | ./mnt/customer/app/libiap.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 4 | ./mnt/customer/app/liblylinkaa.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 2 | ./mnt/customer/app/liblylinkclient.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ❌ | ✅ | ✅ | ❌ | 0 | 6 | ./mnt/customer/app/libprotobuf-lite.so.8 |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 11 | ./mnt/customer/app/lylinkapp |
+| ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 14 | ./mnt/customer/app/lylinkui |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 12 | ./mnt/customer/app/mdnsd |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 11 | ./mnt/customer/app/ui/libcrypto.so.1.1 |
+| ❌ | ✅ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 14 | ./mnt/customer/app/ui/liblylinkav.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 5 | ./mnt/customer/app/ui/liblylinkmw.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 7 | ./mnt/customer/app/ui/liblylinkpcm.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 1 | ./mnt/customer/app/ui/liblylinkserver.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 12 | ./mnt/customer/app/ui/liblylinkui.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 8 | ./mnt/customer/app/ui/liblymodel.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 5 | ./mnt/customer/app/ui/libssl.so.1.1 |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 16 | ./mnt/customer/app/ui/libwebsockets.so.15 |
+| ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 7 | ./mnt/customer/app/update |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libasound.so.2.0.0 |
+| ❌ | ❌ | ❌ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_aacdec.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711adec.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_g711udec.so |
+| ❌ | ❌ | ❌ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_mp3dec.so |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libaw_wavdec.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_base.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_common.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_parser.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libcdx_stream.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libcutils.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libhwdisplay.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libion.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/librgb_ctrl.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libsample_confparser.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./mnt/customer/eyesee-mpp/libsmartlink.so |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./mnt/customer/modules/8821cs.ko |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./mnt/customer/modules/atm.ko |
+| ❌ | ✅ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./mnt/customer/modules/br2684.ko |
+| ❌ | ❌ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./mnt/customer/modules/crc-ccitt.ko |
+| ❌ | ❌ | ❌ | ⚠️ (REL) | ✅ | ✅ | ❌ | ❌ | 0 | 0 | ./mnt/customer/modules/ecb.ko |
+| ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 9 | ./mnt/customer/ota/www/cgi-bin/index.cgi |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./sbin/logcat |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./sbin/logwrapper |
+| ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 7 | ./sbin/update |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/civetweb |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/client |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/jsonfilter |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/lrz |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/lsz |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/newfs_msdos |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/ota-burnboot0 |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/ota-burnuboot |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/progress |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/reboot_efex |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/resolveip |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/swupdate |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/bin/wget-nossl |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libconfig.so.9.1.3 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libglog.so.0.0.0 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libip4tc.so.0.1.0 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libip6tc.so.0.1.0 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libiptext.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libiptext4.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libiptext6.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libjson-c.so.2.0.1 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libnl-3.so.200.16.1 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libnl-genl-3.so.200.16.1 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libnl-tiny.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libota-burnboot.so |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libpcre.so.1.2.6 |
+| ❌ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 15 | ./usr/lib/libwebsockets.so.15 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libxtables.so.10.0.0 |
+| ✅ | ❌ | ✅ | ⚠️ (DSO) | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/lib/libz.so.1.2.8 |
+| ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 9 | ./usr/ota/www/cgi-bin/index.cgi |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/fw_printenv |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/hostapd |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/jffs2dump |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/jffs2reader |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/mdnsd |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/mkfs.jffs2 |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/wpa_cli |
+| ❌ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/wpa_supplicant |
+| ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 0 | 0 | ./usr/sbin/xtables-multi |
+
